@@ -4,16 +4,13 @@ const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
     unique: true,
   },
   firstName: {
     type: String,
-    required: true
   },
   lastName: {
     type: String,
-    required: true
   },
   email: {
     type: String,
@@ -41,11 +38,9 @@ const profileSchema = new mongoose.Schema({
   },
   college: {
     type: String,
-    required: true,
   },
   major: {
     type: String,
-    required: true,
   },
   achievements: {
     type: String,
@@ -53,7 +48,6 @@ const profileSchema = new mongoose.Schema({
   },
   gpa: {
     type: Number,
-    required: true,
   },
   minor: {
     type: String,
@@ -69,15 +63,12 @@ const profileSchema = new mongoose.Schema({
   },
   jobtitle: {
     type: String,
-    required: true,
   },
   companies: {
     type: String,
-    required: true,
   },
   dateofemployment: {
     type: Date,
-    required: true,
   },
   responsiblities: {
     type: String,
