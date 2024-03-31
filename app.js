@@ -28,6 +28,11 @@ const { resetPassword } = require('./controller/userController.js');
 
 app.put('/api/user/edit/:id', resetPassword);
 
+app.get('/api/user/fetch', async (req, res) => {
+  const users = await User.find({});
+  res.send(users);
+});
+
 // New route for user signup
 app.post('/api/signup', async (req, res) => {
   try {
@@ -150,6 +155,27 @@ app.post('/api/admin-verify', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+app.delete('/api/user/adminDelete/:id', async(req, res)=> {
+  try {
+    const userId = req.params.id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Delete the user by ID
+    await User.findByIdAndDelete(userId);
+
+    // Also delete the corresponding profile
+    await Profile.findOneAndDelete({ user: userId });
+
+    res.status(200).json({ message: 'Account Deleted Successfully' });
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
 
 app.delete('/api/user/delete/:id', async (req, res) => {
   try {

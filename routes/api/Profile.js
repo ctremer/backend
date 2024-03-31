@@ -8,6 +8,7 @@ const profileController = require('../../controller/profileController');
 router.post('/create', profileController.createProfile);
 router.get('/fetch/:id', profileController.getProfileById);
 router.put('/update/:id', profileController.updateProfile);
+router.put('/add', profileController.addProfile);
 router.delete('/delete/:id', profileController.deleteProfile);
 
 module.exports = router;

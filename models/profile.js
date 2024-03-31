@@ -4,6 +4,7 @@ const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
     unique: true,
   },
   firstName: {
@@ -44,7 +45,6 @@ const profileSchema = new mongoose.Schema({
   },
   achievements: {
     type: String,
-    default: null,
   },
   gpa: {
     type: Number,
@@ -55,11 +55,9 @@ const profileSchema = new mongoose.Schema({
   },
   yearattended: {
     type: Date,
-    default: null,
   },
   yearcompletion: {
     type: Date,
-    default: null,
   },
   jobtitle: {
     type: String,

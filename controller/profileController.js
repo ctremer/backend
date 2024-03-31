@@ -1,9 +1,9 @@
-const Profile = require('../models/profile'); 
-                 
+const Profile = require('../models/profile');
+
 const profileController = {
   // Get user profile by ID
   getProfileById: async (req, res) => {
-    const userId = req.params.id; 
+    const userId = req.params.id;
     try {
       const userProfile = await Profile.findOne({ user: userId }).populate('user');
       if (!userProfile) {
@@ -16,6 +16,7 @@ const profileController = {
     }
   },
 
+  // Create new profile
   createProfile: async (req, res) => {
     const profileData = req.body;
     try {
@@ -27,6 +28,19 @@ const profileController = {
     }
   },
 
+  // Add new profile
+  addProfile: async (req, res) => {
+    const profileData = req.body;
+    try {
+      const newProfile = await Profile.create(profileData);
+      res.send(newProfile);
+    } catch (error) {
+      console.error('Error adding profile:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
+
+  // Delete profile
   deleteProfile: async (req, res) => {
     const { id } = req.params;
     try {
@@ -40,8 +54,8 @@ const profileController = {
 
   // Update user profile
   updateProfile: async (req, res) => {
-    const userId = req.params.id; 
-    const profileData = req.body; 
+    const userId = req.params.id;
+    const profileData = req.body;
     try {
       const updatedProfile = await Profile.findOneAndUpdate({ user: userId }, profileData, {
         new: true,

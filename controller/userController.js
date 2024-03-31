@@ -51,7 +51,22 @@ const signup = async (req, res) => {
   }
 };
 
+const adminDelete = async (req, res) => {
+  try {
+    const userId = req.params.id;
 
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // Delete the user by ID
+    await User.findByIdAndDelete(userId);
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 const login = async (req, res) => {
   try {
@@ -130,4 +145,4 @@ const fetch = async (req, res) => {
   res.send(users);
 };
 
-module.exports = { signup, login, fetch, resetPassword };
+module.exports = { signup, login, fetch, resetPassword, adminDelete };
