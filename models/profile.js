@@ -9,9 +9,11 @@ const profileSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
+    default: "",
   },
   lastName: {
     type: String,
+    default: "",
   },
   email: {
     type: String,
@@ -23,31 +25,35 @@ const profileSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
-    defualt: ""
+    default: ""
   },
   academicHistory: {
-    type: Object,
-    default: null,
+    type: Array,
+    default: Array,
   },
   employmentHistory: {
-    type: Object,
-    default: null,
+    type: Array,
+    default: Array,
   },
   skills: {
-    type: Object,
-    default: null,
+    type: Array,
+    default: Array,
   },
   college: {
     type: String,
+    default: "",
   },
   major: {
     type: String,
+    default: "",
   },
   achievements: {
     type: String,
+    default: "",
   },
   gpa: {
     type: Number,
+    default: null,
   },
   minor: {
     type: String,
@@ -55,18 +61,23 @@ const profileSchema = new mongoose.Schema({
   },
   yearattended: {
     type: Date,
+    default: null,
   },
   yearcompletion: {
     type: Date,
+    default: null,
   },
   jobtitle: {
     type: String,
+    default: "",
   },
   companies: {
     type: String,
+    default: "",
   },
   dateofemployment: {
     type: Date,
+    default: null,
   },
   responsiblities: {
     type: String,
