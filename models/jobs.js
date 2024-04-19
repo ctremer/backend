@@ -61,7 +61,32 @@ const jobSchema = new Schema({
   country: {
     type: String,
     default: "USA"
-  }
+  },
+  submittedapplications: [
+    {
+      userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        unique: true
+      },
+      name: {
+        type: String,
+        default: ""
+      },
+      dob: {
+        type: Date,
+        default: null
+      },
+      essay1: {
+        type: String,
+        default: ""
+      },
+      essay2: {
+        type: String,
+        default: ""
+      }
+    }
+  ],
 });
 
 module.exports = mongoose.model('Job', jobSchema);

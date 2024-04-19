@@ -33,7 +33,11 @@ const scholarShipSchema = new Schema({
   qualifications: {
     type: String,
     default: ""
-  }
+  },
+  submittedessays: {
+    type: Array,
+    default: Array
+  },
 });
 
 module.exports = mongoose.model('ScholarShip', scholarShipSchema);

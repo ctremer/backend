@@ -91,8 +91,31 @@ const profileSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
+  submittedessays: {
+    type: Array,
+    default: Array
+  },
+  submittedjobapplications: [
+    {
+      jobid: {
+        type: mongoose.Schema.Types.ObjectId,
+        unique: true
+      },
+      essay1: {
+        type: String,
+        default: ""
+      },
+      essay2: {
+        type: String,
+        default: ""
+      }
+    }
+  ],
+  profilepicture: {
+    type: String,
+    default: ""
+  }
 });
-
 profileSchema.index({ user: 1 }, { unique: true });
 
 const Profile = mongoose.model('Profile', profileSchema);
