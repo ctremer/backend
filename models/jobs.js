@@ -87,6 +87,10 @@ const jobSchema = new Schema({
       }
     }
   ],
+  photo: {
+    type: String,
+    default: ""
+  }
 });
 
 module.exports = mongoose.model('Job', jobSchema);

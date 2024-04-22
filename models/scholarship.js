@@ -38,6 +38,10 @@ const scholarShipSchema = new Schema({
     type: Array,
     default: Array
   },
+  photo: {
+    type: String,
+    default: ""
+  }
 });
 
 module.exports = mongoose.model('ScholarShip', scholarShipSchema);
